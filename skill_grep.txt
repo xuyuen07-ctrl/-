@@ -1,0 +1,141 @@
+323:    type: 'damage' | 'heal' | 'skill' | 'weather' | 'system';
+334:  // States to mirror real-time sub-skill cooldown timers in React UI
+454:      skillActiveTimer: 0,
+455:      skillAngle: 0,
+505:      skillActiveTimer: 0,
+506:      skillAngle: 0,
+556:      skillActiveTimer: 0,
+557:      skillAngle: 0,
+607:      skillActiveTimer: 0,
+608:      skillAngle: 0,
+668:      type: 'damage' | 'heal' | 'skill' | 'weather' | 'system';
+676:      type: 'attack1' | 'attack2' | 'attack3' | 'attack4' | 'skill1' | 'skill2' | 'skill3';
+751:  const addBattleLog = (text: string, type: 'damage' | 'heal' | 'skill' | 'weather' | 'system') => {
+827:    else if (type === 'skill1') {
+846:      addBattleLog(`🔗 [技能] ${getBallName(caster)} 打出【鎖縛長鞭】！命中${isBoss ? '首領' : ''}並束縛 ${getBallName(enemy)}！`, 'skill');
+848:    else if (type === 'skill2') {
+860:    else if (type === 'skill3') {
+893:      if (ray.type === 'skill2' || ray.type === 'skill3') {
+913:        if (ray.type === 'attack1' || ray.type === 'skill1') {
+922:        } else if (ray.type === 'skill2') {
+925:        } else if (ray.type === 'skill3') {
+930:          const isContinuous = ray.type === 'skill2' || ray.type === 'skill3' || ray.type === 'attack4';
+955:                addBattleLog(`⚡ [被動技能] ${getBallName(caster)} 累積了【鞭刃】5 層，凝聚時空銀鞭！下一次特殊技能將無冷卻 CD！`, 'skill');
+990:        if (ray.type === 'skill2') ray.pulseTimer = 0.2;
+991:        else if (ray.type === 'skill3') ray.pulseTimer = 0.3;
+1108:          // Handle special skill 3 ending triggers
+1110:            if (ray.type === 'skill3' && ray.timer <= 0) {
+1140:                  addBattleLog(`🩸 [猩紅絞殺] ${getBallName(caster)} 同時命中了 ${ray.hitTargets.length} 名敵人，汲取生命精華，自身回復 +10.0 生命值！`, 'skill');
+1144:                addBattleLog(`🩸 [技] ${getBallName(caster)} 的【猩紅絞殺】施法結束，擊出碎震重擊，擊飛全場敵手！`, 'skill');
+1381:        // Apply status decrements and skills timers
+1620:              addBattleLog(`🐍 [平衡機制] ${getBallName(ball)} 的身軀第 ${firstDeadIndex + 1} 節防護被擊碎，導致後方 ${cutCount} 節身軀隨之崩斷消失！`, 'skill');
+1683:          if (ball.skillActiveTimer > 0) {
+1684:            ball.skillActiveTimer -= subDt;
+1685:            if (ball.skillActiveTimer < 0) {
+1686:              ball.skillActiveTimer = 0;
+1690:          // Special sub-skill active and cooldown timers
+1724:                  addBattleLog(`⚡ [被動技能] ${getBallName(ball)} 消耗了 5 層【鞭刃】被動，豁免了【迅鞭連擊】的冷卻時間！`, 'skill');
+1900:              addBattleLog(`🔗 [鎖魂鞭絞] ${getBallName(ball)} 纏繞束縛結束，銀鞭收束崩解發出爆裂，造成 -${burstDamage.toFixed(2)} 點威能創傷！`, 'skill');
+1970:                    type: 'skill3',
+1985:                  addBattleLog(`🩸 [大招] ${getBallName(ball)} 蓄力引爆！打出覆蓋 5 格的扇形錐體【猩紅絞殺】，持續拉扯絞殺全場！`, 'skill');
+1995:              const hasContinuousActive = state.whipRays?.some((r: any) => r.casterId === ball.id && (r.type === 'skill2' || r.type === 'skill3'));
+2003:              // Evaluate skill activation strategies
+2011:                let skillTriggered = false;
+2030:                  addBattleLog(`⚡ [大招蓄力] ${getBallName(ball)} 開始為終極殺招【猩紅絞殺】充能蓄力 1.5 秒！`, 'skill');
+2032:                  skillTriggered = true;
+2035:                else if (!skillTriggered && bAny.whipSkill2CD <= 0 && dist <= (3.0 * WHIP_GRID_UNIT + rangeBonus)) {
+2039:                    type: 'skill2',
+2064:                  addBattleLog(`🌀 [技能] ${getBallName(ball)} 施展【裂空亂舞】！揮舞星屑銀鞭橫掃 3 格內所有敵兵！`, 'skill');
+2067:                  skillTriggered = true;
+2070:                else if (!skillTriggered && bAny.whipSkill1CD <= 0 && dist <= (4.5 * WHIP_GRID_UNIT + rangeBonus)) {
+2075:                    type: 'skill1',
+2100:                  skillTriggered = true;
+2103:                else if (!skillTriggered && bAny.whipNormalCD <= 0) {
+2238:            // Cooldown for main skill
+2292:                bAny.vampireSkillCooldown = 8.0; // skill cooldown
+2300:                    ball.skillActiveTimer = 1.8; // 1.8s duration
+2301:                    ball.skillAngle = angle;
+2305:                    addBattleLog(`🦇 [主動技能] ${getBallName(ball)} 獠牙完全張開！釋放滿蓄力【嗜血絞噬】：瘋狂纏絞撕咬，吸取生命！`, 'skill');
+2312:                    ball.skillActiveTimer = 0.3; // short bite duration
+2313:                    ball.skillAngle = angle;
+2341:                    addBattleLog(`🦷 [主動技能] ${getBallName(ball)} 釋放短蓄力【嗜血夾擊】，強行定身對手 ${getBallName(target)} 並造成 -${(bBiteDmg*2).toFixed(1)} 點穿刺與定身 1.0 秒！`, 'skill');
+2352:              if (ball.skillActiveTimer <= 0.05 && !bAny.vampireFinishKnockbackTriggered) {
+2370:                addBattleLog(`💥 [主動技能] ${getBallName(ball)} 【嗜血絞噬】絞殺纏繞完畢，釋放澎湃力量將對手強力擊飛！`, 'skill');
+2377:            if (ball.skillActiveTimer > 0) {
+2438:              // Slowed movement during skill release
+2536:                addBattleLog(`🐉 ${getBallName(ball)} 順利完成 3 秒完整蓄力（累計第 ${bAny.waterChargesCompleted} 次蓄力）！`, 'skill');
+2555:                  addBattleLog(`🌊 [二層蓄力] ${getBallName(ball)} 引爆環形水浪打擊群體，並生成 3 顆潤澤水滴補充能量！`, 'skill');
+2604:                  addBattleLog(`🐉 [五層蓄力] ${getBallName(ball)} 發動終極【龍嘯大水爆】，造成大範圍物理碾壓，並分化出雙軌追跡引導水柱！`, 'skill');
+2658:            // Decay standard debuff and skill timers of clone just in case
+2688:              // Set parent's active skill cooldown to 30s
+2693:                addBattleLog(`🔮 幻影分身遭擊碎！【${parent.char.name}】本體被迫解除隱形重回戰場！`, 'skill');
+2704:                addBattleLog(`🔮 15秒分身幻術結束，【${parent.char.name}】本體重回物質實體，血量恢復至分裂當下的 ${parent.hp.toFixed(1)} HP！`, 'skill');
+2730:              let angleDiff = angleToTarget - caster.skillAngle;
+2812:                if (target.burnTickTimer >= 0.125) { // Ticks twice as fast during sub-skill (double damage)
+2927:          if (caster.skillActiveTimer > 0) {
+2942:              const isFullActive = caster.skillActiveTimer > 0 && cAny.vampireSkillType === 'full';
+3012:                let angleDiff = angleToTarget - caster.skillAngle;
+3132:          // 4. Gravity Spatiotemporal Bond (Passive "羈絆" - Always Active) & Rift (Sub-skill "裂縫" Pull multiplier)
+3296:            addBattleLog(`🐳 [龍嘯大水爆] 追跡水柱爆發，對敵方 ${getBallName(target)} 造成 -${dmg.toFixed(1)} 點深度水系傷害！`, 'skill');
+3427:          // Mud Sub-skill "泥沼纏足": make opponent's movement speed extremely low during the 0.5s duration
+3434:          // Dice Sub-skill "重力" outcome: speed reduced by 55.2% (1 - 0.60 * 0.92)
+3901:                  addBattleLog(`🐈 [被動技能] ${getBallName(catBall)} 受到衝撞，瞬間施展【靈貓飄跡】，向側方滑步並免疫本次碰撞與傷害！`, 'skill');
+4132:                // If vampire fangs are extended during contact (meaning skill or subskill active, or moving fast)
+4133:                const fangsAreExtended = (cAny.vampireFangsLength || 0) > 0.1 || (caster.subSkillActiveTimer > 0) || (caster.skillActiveTimer > 0);
+4150:                         addBattleLog(`🩸 [被動] ${getBallName(caster)} 累計獠牙命中 3 次，覺醒【血脈之力】第 ${cAny.vampireBloodPower} 層！傷害與吸血全面提高！`, 'skill');
+4164:                  caster.skillActiveTimer = 0; // abort skill
+4167:                  addBattleLog(`⚠️ [中斷] ${getBallName(caster)} 的【嗜血絞噬】蓄力期受到撞擊，被打斷並進入 2.0 秒軟弱期！`, 'skill');
+4176:                  caster.skillActiveTimer <= 0 &&
+4189:                  addBattleLog(`🧬 [主動技能] ${getBallName(caster)} 接觸對手，獠牙開始膨脹變粗，蓄力進行中！`, 'skill');
+4204:                addBattleLog(`🟫 [主動技能] ${getBallName(caster)} 釋放【泥重衝擊】，砸擊對手造成 -2.0 點物理傷害並生成泥潭！`, 'skill');
+4227:                caster.skillActiveTimer = 1.2;
+4229:                addBattleLog(`🔥 [主動技能] ${getBallName(caster)} 釋放【烈焰重燃】，引爆高熱烈火防護盾！`, 'skill');
+4245:                addBattleLog(`🎲 [主動技能] ${getBallName(caster)} 釋放【混沌骰擊】，造成 -2.0 點混沌傷害並重構運勢！`, 'skill');
+4249:                // Set main skill active timer to 0.3 seconds to represent the active chaotic domain (1.5x radius)
+4250:                caster.skillActiveTimer = 0.3;
+4292:                    skillActiveTimer: 0,
+4293:                    skillAngle: 0,
+4312:                  addBattleLog(`🔮 [被動技能] ${getBallName(caster)} 分裂並彈射分身，自身進入隱身並免疫物理碰撞與傷害！`, 'skill');
+4360:                  addBattleLog(`🐍 [小技能] ${getBallName(caster)} 暴起衝刺命中【蛇影突擊】，對守軍造成 -${finalDmg.toFixed(1)} 點超載傷害！`, 'skill');
+4366:                  addBattleLog(`🐍 [被動技能] ${getBallName(caster)} 蛇頭噬中目標，造成 -${finalDmg.toFixed(1)} 點碰撞傷害並觸發纏絞減速！`, 'skill');
+4414:                // Small skill "數陣爆擊" doubling logic
+4449:                // Apply strong physical repulsion if skill popped
+4456:                  addBattleLog(`🔢 [小技能] ${getBallName(caster)} 在編號【${mapTileNum}】格子引爆【數陣爆擊】，球面數字【${sphereNum}】定格雙倍，造成 -${totalDmg.toFixed(1)} 點碾壓傷害並強力擊退！`, 'skill');
+4461:                  addBattleLog(`🔢 [被動技能] ${getBallName(caster)} 球面數字【${sphereNum}】與地底網格【${mapTileNum}】同諧共振，造成 -${totalDmg.toFixed(1)} 點數位碎裂傷！`, 'skill');
+4524:                    addBattleLog(`⚡ [被動技能] ${getBallName(caster)} 累積了【鞭刃】5 層，凝聚時空銀鞭！下一次【迅鞭連擊】將無冷卻 CD！`, 'skill');
+4589:                          addBattleLog(`🩸 [被動] ${getBallName(caster)} 印記累積命中3次，覺醒【血脈之力】第 ${cAny.vampireBloodPower} 層！吸血與爆發全面提升！`, 'skill');
+4597:                    addBattleLog(`🦷 [小技能] ${getBallName(caster)} 發動【裂牙突刺】，前衝貫穿對手造成 -${finalDmg.toFixed(1)} 傷害並強引拉近戰位，雙倍掠奪生命回復 +${heal.toFixed(1)}！`, 'skill');
+4614:                    addBattleLog(`👢 [小技能] ${getBallName(caster)} 觸發【泥沼纏足】：對敵造成 -1.84 點鈍擊傷害並注入大量厚重泥潭！`, 'skill');
+4635:                    caster.skillActiveTimer = Math.max(caster.skillActiveTimer, 0.368);
+4638:                    addBattleLog(`🔥 [小技能] ${getBallName(caster)} 觸發【瞬間爆燃】：超載爆發！雙倍火焰焚燒頻率啟動！`, 'skill');
+4648:                    caster.skillActiveTimer = Math.max(caster.skillActiveTimer, 0.368);
+4651:                    addBattleLog(`🌀 [小技能] ${getBallName(caster)} 觸發【強力亂流】：製造強烈氣流障壁推開並重創對手！`, 'skill');
+4667:                    caster.skillActiveTimer = Math.max(caster.skillActiveTimer, 0.3);
+4681:                    addBattleLog(`🎲 [小技能] ${getBallName(caster)} 觸發【命運豪賭】！搖出骰子點數 ${outcome}：獲得 [${resultTexts[outcome]}]`, 'skill');
+4691:                    caster.skillActiveTimer = Math.max(caster.skillActiveTimer, 2.3);
+4700:                    addBattleLog(`🌀 [小技能] ${getBallName(caster)} 觸發【重力裂縫】：高維無敵 2.3 秒，引力場狂暴強化！接觸瞬間額外造成 -2.76 點碎裂傷害！`, 'skill');
+4735:                        addBattleLog(`💥 [小技能] 鏡像分身觸發【衝擊】，對 ${getBallName(target)} 造成 -1.84 點重力碎裂傷害與物理擊退！`, 'skill');
+4762:                      // Parent executes skill ONLY if there's no active clone
+4773:                        addBattleLog(`💥 [小技能] ${getBallName(caster)} 本體觸發【衝擊】，對 ${getBallName(target)} 造成 -1.84 點重力碎裂傷害與物理擊退！`, 'skill');
+4816:                    addBattleLog(`🐾 [小技能] ${getBallName(caster)} 對對手發動【幽爪絆擊】，造成 -1.748 點鋒銳傷害，且使其身中「阻力瓦解」狀態（慣性阻力降低 27.6%，持續 1.84 秒）！`, 'skill');
+4861:                    addBattleLog(`🐍 [小技能] ${getBallName(caster)} 發動了【蛇影突進】，周身浮現多重殘影並短距離衝刺！`, 'skill');
+4871:                    addBattleLog(`🔢 [小技能] ${getBallName(caster)} 啟動【數陣爆擊】，球面數字定格為【${cAny.grid9Num || 5}】，蓄力重擊！`, 'skill');
+4897:                    addBattleLog(`⚔️ [小技能] ${getBallName(caster)} 對 ${getBallName(target)} 發打一擊二段 combo【迅鞭連擊】！首段直鞭突刺造成 -2.30 點威能創傷，並拉近目標！`, 'skill');
+5500:          if (caster && (ray.type === 'skill2' || ray.type === 'skill3')) {
+5605:          else if (ray.type === 'skill1') {
+5638:          else if (ray.type === 'skill2') {
+5666:          else if (ray.type === 'skill3') {
+6087:      // 1. First Pass: Draw all background special skill range overlays (攻擊範圍與實際判定完全對應，持續顯示指引以供識別)
+6095:        const isActive = b.skillActiveTimer > 0;
+6102:          // Determine pointing angle: use skillAngle if active, otherwise track opponent in real-time
+6103:          const angle = (isActive || isSubActive) ? b.skillAngle : Math.atan2(opp.y - b.y, opp.x - b.x);
+6262:          // Width gets scaled larger if sub skill is active
+6315:          // Expands further to 2.2x body radius during sub-skill ("球體外火焰瞬間膨脹")
+6397:          // Widens to 1.6x during sub-skill
+6585:          // Expands further to 2.2x body radius during sub-skill ("裂縫" - 「球體光暈擴張」)
+7367:          if (b.skillActiveTimer <= 0) {
+8043:            // Sprint green electric aura if under sub-skill Active
+8143:            // Sub-skill visual rings (數陣爆擊 bright full rotating circle)
+9830:                <div className="text-sm font-semibold text-sky-400 capitalize">{p1Char.skillName.split(' ')[0]}</div>
+9840:                <div className="text-sm font-semibold text-orange-400 capitalize">{p2Char.skillName.split(' ')[0]}</div>
+10156:                  } else if (log.type === 'skill') {

@@ -1,0 +1,52 @@
+  collisions: number;
+      collisions: 0,
+          // Check collisions & apply stack damage/effects
+          // Check spheres collision with the wind fields
+                    // Body segment takes independent HP damage on continuous collision/contact
+              // Resolve collision with all active balls
+              // 2. Mud Foot Binding: collision mud area range (1.5x caster radius)
+        // Unified function to process speed boosts on collisions (walls or ball-to-ball)
+            // Same-team collision filter: skip solid bouncing and skip contact harms
+            // Phantom invisible/holographic filter: skip collision check if either ball is phased out
+            // Ghostly Cat Princess Leaping / Immune state filter: skip collision
+              // Save pre-collision state for potential phantom mirror split
+              // Resolve overlapping instantly to avoid sticky collision bugs
+              // Elastic collision math (with mass considerations)
+                // --- Grid9: "反彈力度改為大" (Grid9's massive numbers collision generates extreme momentum bounce 1.38x) ---
+              // Record collision stat
+              state.stats.collisions++;
+              const collisionX = (b1.x + b2.x) / 2;
+              const collisionY = (b1.y + b2.y) / 2;
+                addFloatingText(floatText, collisionX, collisionY - 18, '#fbbf24');
+                createParticles(collisionX, collisionY, '#fbbf24', 22, 'fire');
+                // Normal physical collision dynamic damage based on impact speeds and sphere mass
+                addFloatingText(floatText, collisionX, collisionY - 12, '#ffffff');
+                createParticles(collisionX, collisionY, '#ffffff', 10, 'spark');
+                  x: collisionX,
+                  y: collisionY,
+                  // Restore caster's HP to pre-collision HP and store it
+                // Match collision position to find the map grid number (1..9):
+                // Determine grid col & row from collision coordinate (clamped within index 0..2)
+                let col = Math.floor((collisionX - startX) / cellW);
+                let row = Math.floor((collisionY - startY) / cellH);
+                  // Standard collision formula: Grid number + Ball number
+                addFloatingText(numTextStr, collisionX, collisionY - 15, '#fbbf24');
+                  createParticles(collisionX, collisionY, '#fbbf24', 28, 'fire');
+                  createParticles(collisionX, collisionY, '#f59e0b', 16, 'spark');
+                const collisionDmg = 1.104;
+                target.hp -= collisionDmg;
+                if (caster.team === 'p1') state.stats.p1DamageDealt += collisionDmg;
+                else state.stats.p2DamageDealt += collisionDmg;
+                addFloatingText(`💧-${collisionDmg.toFixed(2)}`, target.x, target.y - 12, '#38bdf8');
+                // If taken heavy collision damage >= 7.36 HP: Interrupt, reset charge duration, push back, 1.5s lag
+              // 10. Whip Girl Stack Accrual on collision
+                    createParticles(collisionX, collisionY, '#ef4444', 18, 'blood');
+                      x: collisionX,
+                      y: collisionY,
+                    createParticles(collisionX, collisionY, '#b45309', 12, 'dust');
+                    // Temporarily turn off collision detection via leap timer
+                        x: collisionX,
+                        y: collisionY,
+                    // Sparking silver-lavender starburst particles at collision point
+                        x: collisionX,
+                        y: collisionY,

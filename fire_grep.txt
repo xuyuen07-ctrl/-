@@ -1,0 +1,22 @@
+2481:                  // Log and cost HP if we have hit someone or simply fired
+2821:                  createParticles(target.x, target.y, '#f97316', 5, 'fire');
+2825:                // Extra fire/spark splash particle frequency
+2827:                  createParticles(caster.x + (Math.random() * 30 - 15), caster.y + (Math.random() * 30 - 15), '#f97316', 2, 'fire');
+2843:                    type: 'fire',
+3093:                  createParticles(target.x, target.y, '#f97316', 4, 'fire');
+4082:                createParticles(collisionX, collisionY, '#fbbf24', 22, 'fire');
+4230:                createParticles(caster.x, caster.y, '#f97316', 22, 'fire');
+4457:                  createParticles(collisionX, collisionY, '#fbbf24', 28, 'fire');
+4639:                    createParticles(caster.x, caster.y, '#f97316', 15, 'fire');
+5066:          } else if (p.type === 'dust' || p.type === 'fire') {
+6018:        else if (p.type === 'fire') {
+6020:          const fireSize = p.radius * (0.5 + p.life * 1.3);
+6021:          const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, fireSize);
+6028:          ctx.arc(p.x, p.y, fireSize, 0, Math.PI * 2);
+7582:            // Swirling multi-layered nested blazing fire orb
+7583:            const fireGrad = ctx.createRadialGradient(cx, cy, 1, cx, cy, 10);
+7584:            fireGrad.addColorStop(0, '#fef08a'); // yellow center
+7585:            fireGrad.addColorStop(0.4, '#f97316'); // orange
+7586:            fireGrad.addColorStop(1, '#dc2626'); // red boundaries
+7588:            ctx.fillStyle = fireGrad;
+8670:          // Rising fire sparks from bottom of ball

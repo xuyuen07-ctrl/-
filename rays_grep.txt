@@ -1,0 +1,6 @@
+          // Clean up expired rays
+            // Solar heat corona rays radiating outward (烈焰日冕噴發)
+                  <div className={`p-3 rounded-xl border flex flex-col justify-between transition-all duration-300 ${p1Hp <= 0 ? 'bg-slate-950/60 border-slate-950 opacity-50 grayscale' : 'bg-slate-950/45 border-slate-800/90 hover:border-cyan-500/35 hover:shadow-[0_0_10px_rgba(6,182,212,0.05)]'}`}>
+                    <div className={`p-3 rounded-xl border flex flex-col justify-between transition-all duration-300 ${p1_2Hp <= 0 ? 'bg-slate-950/60 border-slate-950 opacity-50 grayscale' : 'bg-slate-950/45 border-slate-800/90 hover:border-blue-500/35 hover:shadow-[0_0_10px_rgba(59,130,246,0.05)]'}`}>
+                  <div className={`p-3 rounded-xl border flex flex-col justify-between transition-all duration-300 ${p2Hp <= 0 ? 'bg-slate-950/60 border-slate-950 opacity-50 grayscale' : 'bg-slate-950/45 border-slate-800/90 hover:border-red-500/35 hover:shadow-[0_0_10px_rgba(239,68,68,0.05)]'}`}>
+                    <div className={`p-3 rounded-xl border flex flex-col justify-between transition-all duration-300 ${p2_2Hp <= 0 ? 'bg-slate-950/60 border-slate-950 opacity-50 grayscale' : 'bg-slate-950/45 border-slate-800/90 hover:border-orange-500/35 hover:shadow-[0_0_10px_rgba(249,115,22,0.05)]'}`}>

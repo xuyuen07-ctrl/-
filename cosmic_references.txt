@@ -1,0 +1,41 @@
+  visualPreset?: 'classic' | 'cosmic' | 'neon';
+      cosmicNebulaParticles: [] as Array<{ x: number, y: number, vx: number, vy: number, life: number }>,
+      cosmicStaff: { angle: 0, isCasting: false, glow: 0 },
+      cosmicTrail: [] as Array<{ x: number, y: number, life: number }>,
+      cosmicCollisionCount: 0,
+      cosmicMagicCharge: 0,
+      cosmicNebulaFieldActive: false,
+      cosmicNebulaParticles: [] as Array<{ x: number, y: number, vx: number, vy: number, life: number }>,
+      cosmicStaff: { angle: 0, isCasting: false, glow: 0 },
+      cosmicTrail: [] as Array<{ x: number, y: number, life: number }>,
+      cosmicCollisionCount: 0,
+      cosmicMagicCharge: 0,
+      cosmicNebulaFieldActive: false,
+      cosmicNebulaParticles: [] as Array<{ x: number, y: number, vx: number, vy: number, life: number }>,
+      cosmicStaff: { angle: 0, isCasting: false, glow: 0 },
+      cosmicTrail: [] as Array<{ x: number, y: number, life: number }>,
+      cosmicCollisionCount: 0,
+      cosmicMagicCharge: 0,
+      cosmicNebulaFieldActive: false,
+      cosmicNebulaParticles: [] as Array<{ x: number, y: number, vx: number, vy: number, life: number }>,
+      cosmicStaff: { angle: 0, isCasting: false, glow: 0 },
+      cosmicTrail: [] as Array<{ x: number, y: number, life: number }>,
+      cosmicCollisionCount: 0,
+      cosmicMagicCharge: 0,
+      cosmicNebulaFieldActive: false,
+          if (ball.char.id === 'cosmic_mage') {
+            ball.cosmicNebulaParticles.forEach((p: any) => {
+            ball.cosmicNebulaParticles = ball.cosmicNebulaParticles.filter((p: any) => p.life > 0);
+                ball.cosmicNebulaParticles.push({
+            ball.cosmicTrail.forEach((t: any) => {
+            ball.cosmicTrail = ball.cosmicTrail.filter((t: any) => t.life > 0);
+            ball.cosmicTrail.push({ x: ball.x, y: ball.y, life: 1.0 });
+            ball.cosmicStaff.angle += subDt * 2;
+                ball.cosmicNebulaFieldActive = true;
+        if (visualPreset === 'cosmic') {
+        if (b.char.id === 'cosmic_mage') {
+            ballAny.cosmicNebulaParticles.forEach((p: any) => {
+            ballAny.cosmicTrail.forEach((t: any) => {
+            ctx.lineTo(b.x + Math.cos(ballAny.cosmicStaff.angle) * 40, b.y + Math.sin(ballAny.cosmicStaff.angle) * 40);
+          } else if (visualPreset === 'cosmic') {
+        if (visualPreset === 'cosmic') {

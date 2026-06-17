@@ -1,0 +1,359 @@
+77:    if (typeof b.radius !== 'number' || isNaN(b.radius) || b.radius <= 0) b.radius = 28;
+407:    windVortices: [] as Array<{ id: number; x: number; y: number; radius: number; pulse: number; angle: number }>,
+411:    snakeShadows: [] as Array<{ x: number; y: number; radius: number; timer: number }>,
+442:      radius: getCharRadius(p1Char.id),
+493:      radius: getCharRadius((p1PartnerChar || p1Char).id),
+544:      radius: getCharRadius(p2Char.id),
+595:      radius: getCharRadius((p2PartnerChar || p2Char).id),
+692:      radius: number;
+774:         radius: Math.random() * 2.5 + 1.5,
+912:          isHit = checkLineCircleIntersection(rx1, ry1, rx2, ry2, enemy.x, enemy.y, enemy.radius);
+914:          isHit = checkSectorCircleIntersection(rx1, ry1, ray.range, ray.angle, Math.PI / 3, enemy.x, enemy.y, enemy.radius);
+916:          isHit = checkArcCircleIntersection(rx1, ry1, WHIP_GRID_UNIT, ray.range, ray.angle, Math.PI / 4, enemy.x, enemy.y, enemy.radius);
+919:          isHit = dist <= (1.2 * WHIP_GRID_UNIT + enemy.radius);
+922:          isHit = dist <= (3 * WHIP_GRID_UNIT + enemy.radius);
+924:          isHit = checkSectorCircleIntersection(rx1, ry1, 5 * WHIP_GRID_UNIT, ray.angle, 20 * Math.PI / 180, enemy.x, enemy.y, enemy.radius);
+967:                return dRes <= (res.radius + enemy.radius);
+1043:           b.x = Math.max(b.radius + 15, Math.min(b.x, targetWidth - b.radius - 15));
+1044:           b.y = Math.max(b.radius + 15, Math.min(b.y, targetHeight - b.radius - 15));
+1115:                  if (dist <= 5 * WHIP_GRID_UNIT + enemy.radius) {
+1206:              radius: 35, // small-range
+1236:              if (dist <= vortex.radius + ball.radius) {
+1322:            if (cDist < ball.radius + 14) { // Crystal hit detection (14px hitbox radius)
+1370:              radius: 42, // extra large mud patch!
+1384:          // Dynamic base radius based on character selection (貪吃蛇與九宮格球比例縮小)
+1390:            ball.radius = Math.round(baseCharRadius * hpRatio);
+1392:            ball.radius = baseCharRadius;
+1474:            // Dynamically adjust head radius representing bulkiness (mass limits)
+1475:            ball.radius = getCharRadius('snake') + (sLen - 2) * 1.25;
+1478:            const spacing = ball.radius * 0.70; // snug overlap
+1518:              if (fDist < ball.radius + 10) {
+1546:                  const segRadius = ball.radius * (0.92 - (idx + 1) * 0.05);
+1550:                  const minDist = enemy.radius + segRadius;
+1625:            ((state as any).snakeShadows as Array<{ x: number; y: number; radius: number; timer: number }>).forEach((shadow) => {
+1632:                const minDist = b.radius + shadow.radius;
+1859:                (state as any).nebulaFields.push({ x: state.width/2, y: state.height/2, radius: 100, life: 0.5 });
+2206:                        radius: 1.2 * WHIP_GRID_UNIT,
+2272:                const dist = ball.radius * (1.3 + Math.random() * 1.5);
+2279:                  radius: Math.random() * 2 + 1,
+2357:                  if (dist < ball.radius * 3.3) {
+2391:                if (dToNext < ball.radius * 2.8) {
+2497:                      radius: Math.random() * 2.5 + 1.2,
+2514:                const rad = ball.radius + 15 * (1.0 - (bAny.waterChargeTimer / 3.0));
+2521:                  radius: Math.random() * 2 + 1.2,
+2563:                      radius: Math.random() * 3 + 1.5,
+2586:                  // Dragon Roar Mega Water Explosion (龍嘯大水爆) => 220px radius, 3.312 damage (3.6 * 0.92)
+2634:                        radius: Math.random() * 4 + 2,
+2726:              // 1. Vampire Siphon & Bite (60° sector, 2.2x body radius + target radius)
+2733:              const inRange = dist <= (caster.radius * 2.2 + target.radius);
+2750:                    radius: Math.random() * 2 + 1.5,
+2760:                  const fogR = caster.radius * (Math.random() * 0.4 + 0.7);
+2767:                    radius: Math.random() * 4.0 + 2.0,
+2775:              // 2. Mud Foot Binding: collision mud area range (1.5x caster radius)
+2776:              if (dist > caster.radius * 1.5 + target.radius) {
+2787:                  const smokeR = caster.radius * (Math.random() * 0.5 + 0.61);
+2794:                    radius: Math.random() * 4.5 + 2.5,
+2802:              // 3. Blaze Instant Combustion: 1.5x body radius
+2803:              if (dist > caster.radius * 1.5 + target.radius) {
+2831:                  const fR = caster.radius * (Math.random() * 1.2 + 0.2);
+2838:                    radius: Math.random() * 5.0 + 2.0,
+2846:              // 4. Storm Powerful Turbulence: 1.4x body radius out-push
+2847:              if (dist > caster.radius * 1.4 + target.radius) {
+2863:                  const windR = caster.radius * 0.8;
+2870:                    radius: Math.random() * 3.5 + 1.0,
+2878:              // 5. Dice Chaos Domain: 1.5x body radius
+2879:              const isInRange = dist <= (caster.radius * 1.5 + target.radius);
+2943:                // Large 360 degrees full-field vacuum range (within 3.3x radius)
+2944:                const fullRange = caster.radius * 3.3;
+2945:                if (dist <= fullRange + target.radius) {
+2964:                      radius: Math.random() * 2.5 + 1.2,
+3008:                // Normal sectoral check (60 degrees, 2.2x body radius)
+3015:                const inRange = dist <= (caster.radius * 2.2 + target.radius);
+3031:                      radius: Math.random() * 2 + 1.5,
+3074:              // 2. Blaze Burn (Flame ring with radius = 1.5 * body radius)
+3075:              const flameRange = caster.radius * 1.5;
+3077:              if (dist <= flameRange + target.radius) {
+3096:              // 3. Storm (Cyclone whirlwind shield with radius = 1.4 * body radius)
+3097:              const stormRange = caster.radius * 1.4;
+3099:              if (dist <= stormRange + target.radius) {
+3132:            const gravityRange = caster.radius * 1.6;
+3140:              const rRadius = caster.radius * (0.8 + Math.random() * 0.7);
+3147:                radius: Math.random() * 2 + 1,
+3154:            if (dist <= gravityRange + target.radius) {
+3199:                  radius: Math.random() * 2 + 1,
+3241:            // If overlapping with the ball's radius
+3242:            if (dist < ball.radius + 10) { // 10 is droplet radius
+3282:          if (dist < target.radius + 6) {
+3314:              radius: Math.random() * 2 + 1,
+3334:            if (dist < ball.radius + p.radius) {
+3348:                x: ball.x + Math.cos(ringAngle) * (ball.radius + 2),
+3349:                y: ball.y + Math.sin(ringAngle) * (ball.radius + 2),
+3353:                radius: Math.random() * 2 + 1,
+3378:              if (dist <= opp.radius * 1.5 + victim.radius) {
+3489:                  x: b.x - ndx * b.radius * 0.8 + (Math.random() * 8 - 4),
+3490:                  y: b.y - ndy * b.radius * 0.8 + (Math.random() * 8 - 4),
+3494:                  radius: Math.random() * (3.5 + distress * 2.0) + 2.0,
+3509:                  x: b.x - ndx * b.radius * 0.5 + (Math.random() * 12 - 6),
+3510:                  y: b.y - ndy * b.radius * 0.5 + (Math.random() * 12 - 6),
+3514:                  radius: Math.random() * 2.2 + 1.2,
+3538:            const targetDist = source.radius + target.radius;
+3574:                const targetDist = snakeSource.radius + target.radius;
+3593:                const targetDist = snakeSource.radius + target.radius;
+3650:          const minX = shrinkInsetX + b.radius;
+3651:          const maxX = Math.max(minX + 30, state.width - shrinkInsetX - b.radius);
+3652:          const minY = shrinkInsetY + b.radius;
+3653:          const maxY = Math.max(minY + 30, state.height - shrinkInsetY - b.radius);
+3733:                  const sRadius = b.radius * 0.8;
+3817:            const minDist = b1.radius + b2.radius;
+3882:                      radius: 5.5 * (1 - t * 0.6),
+4206:                // Generate Mud puddle at touch point: radius = caster radius * 1.30
+4211:                  radius: caster.radius * 1.3, // 1.3x width
+4224:                // Activate core flame expansion shield (radius 1.5x)
+4247:                // Set main skill active timer to 0.3 seconds to represent the active chaotic domain (1.5x radius)
+4280:                    radius: caster.radius * 0.85, // "分身外觀：體積比本體再小 15%"
+4562:                    const pullDist = caster.radius + target.radius + 4.0;
+4619:                      radius: caster.radius,
+4709:                        radius: Math.random() * 2.5 + 2,
+4751:                            radius: Math.random() * 2 + 1.5,
+4789:                            radius: Math.random() * 2 + 1.5,
+4839:                        radius: Math.random() * 2.5 + 1.2,
+4907:                        radius: Math.random() * 2 + 1,
+5404:        const pGlow = ctx.createRadialGradient(puddle.x, puddle.y, 4, puddle.x, puddle.y, puddle.radius);
+5411:        ctx.arc(puddle.x, puddle.y, puddle.radius, 0, Math.PI * 2);
+5425:            const bx = puddle.x + Math.cos(offsetAngle) * (puddle.radius * distRatio);
+5426:            const by = puddle.y + Math.sin(offsetAngle) * (puddle.radius * distRatio);
+5451:          const resGlow = ctx.createRadialGradient(res.x, res.y, 2, res.x, res.y, res.radius);
+5458:          ctx.arc(res.x, res.y, res.radius, 0, Math.PI * 2);
+5467:          ctx.arc(res.x, res.y, res.radius, 0, Math.PI * 2);
+5474:            const rOffset = res.radius * 0.4 * (0.5 + 0.5 * Math.sin(performance.now() * 0.005 + i));
+5789:          const rGlow = ctx.createRadialGradient(vortex.x, vortex.y, 4, vortex.x, vortex.y, vortex.radius + pulseSize);
+5796:          ctx.arc(vortex.x, vortex.y, vortex.radius + pulseSize, 0, Math.PI * 2);
+5803:          ctx.arc(vortex.x, vortex.y, vortex.radius, 0, Math.PI * 2);
+5815:          ctx.arc(0, 0, vortex.radius - 8, 0, Math.PI * 0.75, false);
+5820:          ctx.arc(0, 0, vortex.radius - 18, Math.PI, Math.PI * 1.75, false);
+5826:          ctx.arc(vortex.radius - 8, 0, 2.5, 0, Math.PI * 2);
+5830:          ctx.arc(-(vortex.radius - 18), 0, 1.8, 0, Math.PI * 2);
+5898:          const pOsc = Math.sin(performance.now() * 0.009 + food.id * 10) * 3 + 9; // pulsate radius between 6 and 12
+5929:        ((state as any).snakeShadows as Array<{ x: number; y: number; radius: number; timer: number }>).forEach((shadow) => {
+5940:          ctx.arc(shadow.x, shadow.y, shadow.radius, 0, Math.PI * 2);
+5948:          ctx.arc(shadow.x, shadow.y, shadow.radius * 0.6, Math.PI * 0.2, Math.PI * 0.8);
+5999:          const flareSize = p.radius * p.life * 1.8;
+6018:          const fireSize = p.radius * (0.5 + p.life * 1.3);
+6038:          const electricLen = p.radius * 3.5;
+6053:            const dLen = p.radius * (1.3 + speed * 1.6) * p.life;
+6054:            const dWid = p.radius * p.life;
+6065:            ctx.arc(p.x, p.y, p.radius * p.life * 1.1, 0, Math.PI * 2);
+6072:          const smokeRad = p.radius * (0.8 + (1.0 - p.life) * 2.4);
+6097:          // VAMPIRE: 60° sectoral range projecting out, up to 1.2x radius outside core (total 2.2x radius)
+6098:          const sectorRad = b.radius * 2.2;
+6112:            const sectorGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, sectorRad);
+6151:            ctx.arc(b.x, b.y, b.radius + 15, 0, Math.PI * 2);
+6161:              const x1 = b.x + Math.cos(rad) * (b.radius + 15);
+6162:              const y1 = b.y + Math.sin(rad) * (b.radius + 15);
+6163:              const x2 = b.x + Math.cos(nextRad) * (b.radius + 15);
+6164:              const y2 = b.y + Math.sin(nextRad) * (b.radius + 15);
+6177:              ctx.moveTo(b.x + Math.cos(flowAngle) * b.radius, b.y + Math.sin(flowAngle) * b.radius);
+6198:            const lfx1 = b.x + Math.cos(lfAlpha - 0.08) * b.radius;
+6199:            const lfy1 = b.y + Math.sin(lfAlpha - 0.08) * b.radius;
+6200:            const lfx2 = b.x + Math.cos(lfAlpha + 0.08) * b.radius;
+6201:            const lfy2 = b.y + Math.sin(lfAlpha + 0.08) * b.radius;
+6202:            const lfxTip = b.x + Math.cos(lfAlpha) * (b.radius + fangLen);
+6203:            const lfyTip = b.y + Math.sin(lfAlpha) * (b.radius + fangLen);
+6215:            const rfx1 = b.x + Math.cos(rfAlpha - 0.08) * b.radius;
+6216:            const rfy1 = b.y + Math.sin(rfAlpha - 0.08) * b.radius;
+6217:            const rfx2 = b.x + Math.cos(rfAlpha + 0.08) * b.radius;
+6218:            const rfy2 = b.y + Math.sin(rfAlpha + 0.08) * b.radius;
+6219:            const rfxTip = b.x + Math.cos(rfAlpha) * (b.radius + fangLen);
+6220:            const rfyTip = b.y + Math.sin(rfAlpha) * (b.radius + fangLen);
+6250:              const perpX = -dy / (b.radius * 2);
+6251:              const perpY = dx / (b.radius * 2);
+6261:          const earthRad = b.radius * (isSubActive ? 1.4 : 1.1);
+6268:            const mudGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, earthRad);
+6279:            for (let r = b.radius + 4; r < earthRad; r += 7) {
+6291:              ctx.moveTo(b.x + Math.cos(ang) * b.radius, b.y + Math.sin(ang) * b.radius);
+6312:          // BLAZE: Expansion flame circle ring, radius = 1.5 * body radius
+6313:          // Expands further to 2.2x body radius during sub-skill ("球體外火焰瞬間膨脹")
+6314:          const flameRad = b.radius * (isSubActive ? 2.2 : 1.5);
+6321:            const flameGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, flameRad);
+6336:              const rStart = b.radius + 3;
+6386:              const fx = b.x + Math.cos(rotA) * (b.radius + 8);
+6387:              const fy = b.y + Math.sin(rotA) * (b.radius + 8);
+6394:          // STORM (Lightning): rapid cyclone wind screen, radius = 1.4 * body radius
+6396:          const stormRad = b.radius * (isSubActive ? 1.6 : 1.4);
+6403:            const stormGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, stormRad);
+6421:              let lx = b.x + Math.cos(boltAngle) * b.radius;
+6422:              let ly = b.y + Math.sin(boltAngle) * b.radius;
+6427:              const segmentLen = (stormRad - b.radius) / 3;
+6429:                const stepRad = b.radius + j * segmentLen;
+6466:              const ripRad = b.radius + (stormRad - b.radius) * elapsedProgress;
+6484:            ctx.arc(b.x, b.y, b.radius + 3, performance.now() * spinSparkSpeed, performance.now() * spinSparkSpeed + Math.PI * 2);
+6488:          const domainRad = b.radius * 1.5;
+6529:              const diceGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, domainRad);
+6582:          // GRAVITY: circular gravity range, radius = 1.6 * body radius
+6583:          // Expands further to 2.2x body radius during sub-skill ("裂縫" - 「球體光暈擴張」)
+6584:          const gravityRad = b.radius * (isSubActive ? 2.2 : 1.6);
+6592:          const gravityGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, gravityRad);
+6648:            const distFromC = b.radius + (gravityRad - b.radius) * 0.45;
+6664:            const innerR = b.radius + 8 + (isSubActive ? Math.sin(performance.now() * 0.02 + i) * 6 : 0);
+6704:              const pulseRad = pBall.radius * 1.5 + Math.sin(performance.now() * 0.01) * 3;
+6729:            const fieldRad = b.radius * (activeLeap ? 1.7 : 1.3);
+6733:            const catFieldGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, fieldRad);
+6781:            const ringRadius = b.radius + 35 * (1.0 - progressRatio);
+6783:            const radialGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, ringRadius);
+6796:            ctx.fillText(`CHARGE ${(progressRatio * 100).toFixed(0)}%`, b.x, b.y - b.radius - 12);
+6850:              ctx.fillText(`JETTING ${(bAny.waterJetTimer).toFixed(1)}s`, b.x, b.y - b.radius - 12);
+6860:            ctx.arc(b.x - 20 + i * 10, b.y + b.radius + 12, 3.2, 0, Math.PI * 2);
+6877:          const zoneGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, whipRange);
+6938:          ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+6944:          ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+6967:        const glowRadius = b.radius + glowRadiusOffset;
+6968:        const baseGradient = ctx.createRadialGradient(b.x, b.y, b.radius - 8, b.x, b.y, glowRadius);
+7005:          const auraRad = b.radius + 6 + 6 * (0.5 + 0.5 * pulseOffset);
+7009:          const auraGlow = ctx.createRadialGradient(b.x, b.y, b.radius, b.x, b.y, auraRad);
+7025:          ctx.arc(b.x, b.y, b.radius + 5, performance.now() * 0.001, performance.now() * 0.001 + Math.PI * 2);
+7069:        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+7095:            ctx.arc(b.x, b.y, b.radius - 2, 0, Math.PI * 2);
+7098:            const grad = ctx.createRadialGradient(b.x + Math.cos(angle) * 10, b.y + Math.sin(angle) * 10, 0, b.x, b.y, b.radius);
+7102:            ctx.fillRect(b.x - b.radius, b.y - b.radius, b.radius * 2, b.radius * 2);
+7124:          const alertGlow = ctx.createRadialGradient(b.x, b.y, b.radius * 0.7, b.x, b.y, b.radius + 6);
+7130:          ctx.arc(b.x, b.y, b.radius + 6, 0, Math.PI * 2);
+7146:          const br = b.radius;
+7194:          ctx.arc(b.x - 1.5, b.y + 1.2, b.radius + 1, 0, Math.PI * 2);
+7205:            const radiusOffset = b.radius * 0.5 * (0.35 + 0.35 * Math.sin(performance.now() * 0.0024 + s));
+7206:            const sx = b.x + Math.cos(starAngle) * radiusOffset;
+7207:            const sy = b.y + Math.sin(starAngle) * radiusOffset;
+7221:          const scanOffset = (performance.now() * 0.04) % (b.radius * 2);
+7222:          const topY = b.y - b.radius;
+7224:          for (let sy = topY + scanOffset; sy < b.y + b.radius; sy += 9) {
+7225:            const angle = Math.acos(Math.abs(sy - b.y) / b.radius);
+7226:            const halfWidth = b.radius * Math.sin(angle);
+7245:          ctx.moveTo(b.x - b.radius * 0.6, b.y - b.radius * 0.5);
+7246:          ctx.bezierCurveTo(b.x - b.radius * 0.2, b.y - b.radius * 0.3, b.x - b.radius * 0.3, b.y + b.radius * 0.3, b.x - b.radius * 0.6, b.y + b.radius * 0.5);
+7247:          ctx.moveTo(b.x + b.radius * 0.6, b.y - b.radius * 0.5);
+7248:          ctx.bezierCurveTo(b.x + b.radius * 0.2, b.y - b.radius * 0.3, b.x + b.radius * 0.3, b.y + b.radius * 0.3, b.x + b.radius * 0.6, b.y + b.radius * 0.5);
+7267:            const leftGrad = ctx.createLinearGradient(b.x - b.radius * 0.4, b.y + b.radius * 0.5, b.x - b.radius * 0.4, b.y + b.radius * 0.7 + FLen);
+7276:            ctx.moveTo(b.x - b.radius * 0.55 - FWidth * 1.5, b.y + b.radius * 0.6);
+7277:            ctx.lineTo(b.x - b.radius * 0.25 + FWidth * 1.5, b.y + b.radius * 0.6);
+7278:            ctx.lineTo(b.x - b.radius * 0.4, b.y + b.radius * 0.6 + FLen);
+7284:            const rightGrad = ctx.createLinearGradient(b.x + b.radius * 0.4, b.y + b.radius * 0.5, b.x + b.radius * 0.4, b.y + b.radius * 0.7 + FLen);
+7293:            ctx.moveTo(b.x + b.radius * 0.25 - FWidth * 1.5, b.y + b.radius * 0.6);
+7294:            ctx.lineTo(b.x + b.radius * 0.55 + FWidth * 1.5, b.y + b.radius * 0.6);
+7295:            ctx.lineTo(b.x + b.radius * 0.4, b.y + b.radius * 0.6 + FLen);
+7304:              ctx.arc(b.x - b.radius * 0.4 + (Math.random() * 2 - 1), b.y + b.radius * 0.6 + FLen * 0.9, 2, 0, Math.PI * 2);
+7305:              ctx.arc(b.x + b.radius * 0.4 + (Math.random() * 2 - 1), b.y + b.radius * 0.6 + FLen * 0.9, 2, 0, Math.PI * 2);
+7317:            ctx.arc(b.x - b.radius * 0.55, b.y + b.radius * 0.45, 4, Math.PI * 0.7, Math.PI * 1.5);
+7319:            ctx.arc(b.x + b.radius * 0.55, b.y + b.radius * 0.45, 4, Math.PI * 1.5, Math.PI * 0.3);
+7350:          ctx.moveTo(b.x - 12, b.y + b.radius * 0.4);
+7352:          ctx.quadraticCurveTo(b.x + 6, b.y - 8, b.x + 12, b.y + b.radius * 0.4);
+7353:          ctx.quadraticCurveTo(b.x, b.y + b.radius * 0.1, b.x - 12, b.y + b.radius * 0.4);
+7358:          ctx.moveTo(b.x - 7, b.y + b.radius * 0.4);
+7360:          ctx.quadraticCurveTo(b.x + 3, b.y - 2, b.x + 7, b.y + b.radius * 0.4);
+7369:              const sx = b.x + Math.cos(sparkAngle) * (b.radius + 3);
+7370:              const sy = b.y + Math.sin(sparkAngle) * (b.radius + 3);
+7392:          ctx.arc(b.x, b.y, b.radius - 8, performance.now() * 0.0015, performance.now() * 0.0015 + Math.PI / 2);
+7396:          ctx.arc(b.x, b.y, b.radius - 8, performance.now() * 0.0015 + Math.PI, performance.now() * 0.0015 + Math.PI * 1.5);
+7405:        ctx.arc(b.x, b.y, b.radius + 6, performance.now() * 0.002 * (isP1 ? 1 : -1), performance.now() * 0.002 * (isP1 ? 1 : -1) + Math.PI * 2);
+7414:          ctx.arc(b.x, b.y, b.radius + 3, 0, Math.PI * 2);
+7421:          const size = b.radius * 1.1;
+7431:          const radius = 4;
+7432:          ctx.roundRect ? ctx.roundRect(rx, ry, size, size, radius) : ctx.rect(rx, ry, size, size);
+7731:            ctx.moveTo(cx - 10, cy - b.radius + 3);
+7732:            ctx.lineTo(cx - 15, cy - b.radius - 8);
+7733:            ctx.lineTo(cx - 2, cy - b.radius + 3);
+7740:            ctx.moveTo(cx - 9, cy - b.radius + 2);
+7741:            ctx.lineTo(cx - 13, cy - b.radius - 5);
+7742:            ctx.lineTo(cx - 3, cy - b.radius + 2);
+7749:            ctx.moveTo(cx + 2, cy - b.radius + 3);
+7750:            ctx.lineTo(cx + 15, cy - b.radius - 8);
+7751:            ctx.lineTo(cx + 10, cy - b.radius + 3);
+7758:            ctx.moveTo(cx + 3, cy - b.radius + 2);
+7759:            ctx.lineTo(cx + 13, cy - b.radius - 5);
+7760:            ctx.lineTo(cx + 9, cy - b.radius + 2);
+7818:              ctx.arc(cx, cy, b.radius + 2, 0, Math.PI * 2);
+7825:              const pulseDist = b.radius + 7 + Math.sin(performance.now() * 0.01) * 2.0;
+7860:              ctx.arc(cx, cy, b.radius + 12, performance.now() * 0.005, performance.now() * 0.005 + Math.PI * 2);
+7867:                const spX = cx + Math.cos(spAng) * (b.radius + 12);
+7868:                const spY = cy + Math.sin(spAng) * (b.radius + 12);
+7906:              const segRadius = b.radius * (0.92 - (i + 1) * 0.05);
+7986:            ctx.arc(0, 0, b.radius + 3 + mistPulse, 0, Math.PI * 2);
+7990:            const headGrad = ctx.createRadialGradient(1, 0, 1, 1, 0, b.radius);
+8000:            ctx.moveTo(-b.radius, -b.radius * 0.7);
+8001:            ctx.quadraticCurveTo(b.radius * 0.5, -b.radius * 0.9, b.radius * 1.1, 0); // pointed nose tip
+8002:            ctx.quadraticCurveTo(b.radius * 0.5, b.radius * 0.9, -b.radius, b.radius * 0.7);
+8011:            ctx.moveTo(-b.radius * 0.3, -b.radius * 0.35);
+8012:            ctx.lineTo(0, -b.radius * 0.1);
+8013:            ctx.lineTo(-b.radius * 0.3, b.radius * 0.35);
+8019:            ctx.ellipse(b.radius * 0.32, -b.radius * 0.26, 5.0, 3.0, Math.PI * 0.08, 0, Math.PI * 2);
+8020:            ctx.ellipse(b.radius * 0.32, b.radius * 0.26, 5.0, 3.0, -Math.PI * 0.08, 0, Math.PI * 2);
+8026:            ctx.ellipse(b.radius * 0.32, -b.radius * 0.26, 4.2, 0.8, Math.PI * 0.08, 0, Math.PI * 2);
+8027:            ctx.ellipse(b.radius * 0.32, b.radius * 0.26, 4.2, 0.8, -Math.PI * 0.08, 0, Math.PI * 2);
+8034:            ctx.moveTo(b.radius * 0.75, -b.radius * 0.12);
+8035:            ctx.lineTo(b.radius * 0.92, -b.radius * 0.05);
+8036:            ctx.lineTo(b.radius * 0.75, 0);
+8037:            ctx.lineTo(b.radius * 0.92, b.radius * 0.05);
+8038:            ctx.lineTo(b.radius * 0.75, b.radius * 0.12);
+8048:              ctx.arc(b.radius * 0.85, 0, 9, 0, Math.PI * 2);
+8056:              const coilRad = b.radius + 20 * (1 - bAny.snakeCoilVisualPercent);
+8084:            const gridRadius = b.radius;
+8130:            ctx.font = `900 ${b.radius * 0.68}px "JetBrains Mono", Fira Code, Courier, monospace`;
+8147:              ctx.arc(cx, cy, b.radius + 6, performance.now() * 0.008, performance.now() * 0.008 + Math.PI * 2);
+8166:            ctx.moveTo(cx - b.radius * 0.7, cy - 2);
+8167:            ctx.quadraticCurveTo(cx - b.radius * 0.35, cy + 3, cx, cy - 2);
+8168:            ctx.quadraticCurveTo(cx + b.radius * 0.35, cy - 7, cx + b.radius * 0.7, cy - 2);
+8171:            ctx.moveTo(cx - b.radius * 0.6, cy + 6);
+8172:            ctx.quadraticCurveTo(cx - b.radius * 0.3, cy + 11, cx, cy + 6);
+8173:            ctx.quadraticCurveTo(cx + b.radius * 0.3, cy + 1, cx + b.radius * 0.6, cy + 6);
+8182:            ctx.arc(cx - b.radius * 0.65, cy - 2, 4, -Math.PI / 2, Math.PI / 2);
+8183:            ctx.arc(cx - b.radius * 0.55, cy + 4, 3, -Math.PI / 2, Math.PI / 2);
+8185:            ctx.arc(cx + b.radius * 0.65, cy - 2, 4, Math.PI / 2, -Math.PI / 2);
+8186:            ctx.arc(cx + b.radius * 0.55, cy + 4, 3, Math.PI / 2, -Math.PI / 2);
+8194:            ctx.moveTo(cx - 5, cy - b.radius + 3);
+8195:            ctx.lineTo(cx, cy - b.radius - 8); // Horn tip
+8196:            ctx.lineTo(cx + 5, cy - b.radius + 3);
+8245:              const mistGrad = ctx.createRadialGradient(cx, cy, b.radius * 0.9, cx, cy, b.radius * 1.8);
+8251:              ctx.arc(cx, cy, b.radius * 1.8, 0, Math.PI * 2);
+8258:            ctx.arc(cx, cy, b.radius - 1, 0, Math.PI * 2);
+8264:              ctx.moveTo(cx + i, cy - b.radius);
+8265:              ctx.lineTo(cx + i, cy + b.radius);
+8269:              ctx.moveTo(cx - b.radius, cy + i);
+8270:              ctx.lineTo(cx + b.radius, cy + i);
+8279:            ctx.arc(cx, cy, b.radius * 0.75, -Math.PI / 3, Math.PI / 3);
+8282:            ctx.arc(cx, cy, b.radius * 0.55, Math.PI * 0.75, Math.PI * 1.25);
+8294:            const gripX = cx + Math.cos(gripAngle) * b.radius * 0.85;
+8295:            const gripY = cy + Math.sin(gripAngle) * b.radius * 0.85;
+8400:              const coilRadius = b.radius + 5;
+8405:                const currR = b.radius * 0.85 + (coilRadius - b.radius * 0.85) * fraction;
+8439:              const radialGrad = ctx.createRadialGradient(cx, cy, b.radius, cx, cy, b.radius * 2.2);
+8445:              ctx.arc(cx, cy, b.radius * 2.2, 0, Math.PI * 2);
+8452:              ctx.arc(cx, cy, b.radius * 1.35, 0, Math.PI * 2);
+8499:          ctx.arc(b.x, b.y, b.radius + 8, 0, Math.PI * 2);
+8510:          ctx.arc(b.x, b.y, b.radius + 8, startAngle, endAngle);
+8519:          ctx.fillText(`${b.subSkillCooldownTimer.toFixed(1)}s`, b.x + b.radius + 12, b.y - 2);
+8530:          ctx.arc(b.x, b.y, b.radius + 8, 0, Math.PI * 2);
+8538:          ctx.fillText('ON ⭐', b.x + b.radius + 12, b.y - 2);
+8546:          ctx.arc(b.x + b.radius + 11, b.y - 4, 3, 0, Math.PI * 2);
+8554:          ctx.fillText('READY', b.x + b.radius + 17, b.y - 2);
+8587:        ctx.fillText(b.char.name, b.x, b.y - b.radius - 12);
+8598:          ctx.fillText('⏳ [ 減速中 -96% ]', b.x, b.y - b.radius - 23);
+8604:          ctx.arc(b.x, b.y, b.radius + 4, 0, Math.PI * 2);
+8612:            const radiusMultiplier = b.radius + 3 + Math.sin(performance.now() * 0.01 + i) * 2;
+8613:            const px = b.x + Math.cos(angle) * radiusMultiplier;
+8614:            const py = b.y + Math.sin(angle) * radiusMultiplier;
+8628:          ctx.fillText('💫 [ 眩暈 Stun ]', b.x, b.y - b.radius - 23);
+8636:            const starY = b.y - b.radius - 6 + Math.sin(angle * 2.5) * 2;
+8650:            ctx.moveTo(b.x + Math.cos(a) * (b.radius - 2), b.y + Math.sin(a) * (b.radius - 2));
+8651:            ctx.lineTo(b.x + Math.cos(a) * (b.radius + 4), b.y + Math.sin(a) * (b.radius + 4));
+8666:          ctx.fillText('🔥 [ 燃燒 Burn ]', b.x, b.y - b.radius + offsetPos);
+8673:            const rOffset = b.radius * (0.3 + 0.7 * progress);
+8697:            ctx.fillText(`🎲 ${cycleNum} 🎲`, b.x, b.y - b.radius - 24);
+8713:            ctx.fillText(`🎲 ${outcome} 🎲`, b.x, b.y - b.radius - 24);
+8725:            ctx.fillText(`⚡ +${maxLimitPercent.toFixed(2)}% MAX`, b.x, b.y + b.radius + 14);
+8728:            ctx.fillText(`⚡ +${boostVal.toFixed(2)}% 速`, b.x, b.y + b.radius + 14);
+8742:          ctx.fillText(`✦ 狂風疾速 +10% ✦`, b.x, b.y - b.radius - 34);
+8748:          ctx.arc(b.x, b.y, b.radius + 5 + Math.sin(performance.now() * 0.015) * 2.2, 0, Math.PI * 2);
+8773:          ctx.lineWidth = b.radius * 0.9;
+8786:          ctx.lineWidth = b.radius * 0.25;
+8800:            const size = b.radius * 1.5 * (0.2 + ratio * 0.7);
+8825:          ctx.lineWidth = b.radius * 0.5;
+8834:            const trailRad = b.radius * (0.15 + ratio * 0.6);
+8850:              const offsetDist = Math.random() * b.radius * 0.8;

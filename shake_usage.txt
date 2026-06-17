@@ -1,0 +1,25 @@
+426:    screenShake: 0,
+2353:                    state.screenShake = 9.0; // full charge screen shake
+2389:                    state.screenShake = 6.0; // short clamp screen shake
+2413:                    state.screenShake = 11.0; // heavy screen shake for final knockback explosion!
+2503:                  state.screenShake = Math.max(state.screenShake || 0, 2.0); // high pressure jet spray shake
+3218:                state.screenShake = Math.max(state.screenShake || 0, 1.8); // spatiotemporal continuous pull rumbling
+4129:                state.screenShake = 12.0; // intense screen shake for CRIT!
+4162:                state.screenShake = Math.max(state.screenShake || 0, Math.min(6.0, relSpeedMag * 1.25)); // dynamic physical shake
+4252:                state.screenShake = Math.max(state.screenShake || 0, 7.5); // mud crash screen shake
+4277:                state.screenShake = Math.max(state.screenShake || 0, 7.0); // blaze splash screen shake
+4293:                state.screenShake = Math.max(state.screenShake || 0, 5.5); // dice rumble screen shake
+4362:                  state.screenShake = Math.max(state.screenShake || 0, 7.0); // glass division rift shake
+4407:                  state.screenShake = Math.max(state.screenShake || 0, 7.5); // sprint strike shake
+4413:                  state.screenShake = Math.max(state.screenShake || 0, 5.0); // bite shake
+4504:                  state.screenShake = Math.max(state.screenShake || 0, 8.5); // numerical blast screen shake
+4509:                  state.screenShake = Math.max(state.screenShake || 0, 4.0); // digital resonance screen shake
+4531:                state.screenShake = Math.max(state.screenShake || 0, 3.5); // splash shake
+4552:                  state.screenShake = Math.max(state.screenShake || 0, 9.5); // heavy heavy hit back shake
+4864:                    state.screenShake = Math.max(state.screenShake || 0, 5.5); // amethyst claw trip slash shake
+5102:      if (state.screenShake && state.screenShake > 0) {
+5103:        state.screenShake -= dt * 25;
+5104:        if (state.screenShake < 0) state.screenShake = 0;
+5162:      if (state.screenShake && state.screenShake > 0.1) {
+5163:        const dx = (Math.random() * 2 - 1) * state.screenShake;
+5164:        const dy = (Math.random() * 2 - 1) * state.screenShake;

@@ -1,0 +1,8 @@
+{
+  "name": "Remix: 畫家更新決鬥場",
+  "description": "這是一款 1v1 球體對戰遊戲。玩家可以選擇吸血鬼、泥土等角色，各具有專屬的血量與被動技能。遊戲搭載豐富的物理碰撞反彈、技能觸發特效、浮動數值表現，並支援手機滑动與手勢控制面板。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
